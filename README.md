@@ -1,4 +1,5 @@
 # Vulnerable BakeryMgmtSystem
+![s1](https://github.com/user-attachments/assets/aa56ce2f-8e03-41f9-b287-3a8f6dec6268)
 
 
 # A CLI Based Bakery Management System in Python 
@@ -20,3 +21,4 @@ and Implementing Web Based too.
 1. Learn to Roam Every Feature's
 2. Understand How thing's Work ...
 3. To learn about Overflow's and How to avoid it.
+4. TO get    [REAL FLAG]    TO avoid Lolipop. :<
