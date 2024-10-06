@@ -113,7 +113,7 @@ def f1():
     if random.choice([True, False]):
         print(f"[REAL FLAG] Jhanda: {w1}")
     else:
-        print(f"[DECOY FLAG] Jhanda: {g1}")
+        print(f"[LOLIPOP] Jhanda: {g1}")
 
 
 def pay_ment(total_cost):
@@ -180,66 +180,54 @@ def customer_menu():
             elif choiceforcus == 3:
                 check_cart()
             elif choiceforcus ==4:
-                 pay_ment(calculate_total_cost())
+                pay_ment(calculate_total_cost())
             elif choiceforcus==5:
                 clear_screen()
-                role_selection()    
+                bms.role_selection()    
             elif choiceforcus == 6:
                 print("Exiting...")
                 break
-# Role Selection
-def role_selection():
-    print("Welcome to Vulnerable BMS \n")
-    print("Are you an Admin or a Customer?")
-    print("1. Admin")
-    print("2. Customer")
-    choice = input("Enter your choice: ")
-    if choice == "1":
-        print("Please Verify that you are a Admin.\n")
-        attempts = 2
 
-        while attempts > 0:
-            username = input("Enter your username: ")
-            password = input("Enter your password: ")
-            if len(username)<=1:
-                print("Username must be greater than one letter.")
-                continue
+class BakeryMgmtSys:
+    def __init__(self):
+        self.a = False  
+        self.b = random.randint(15, 25)  
+        self.c = "admin" 
+        self.d = "password123"  
 
-            if username == "test" and password == "password123":
-                print("Login Success! Welcome Admin")
-                tm.sleep(2)
-                admin_menu()
-                break
-            else:
-                attempts -= 1
-                print(f"Sorry Wrong password {attempts} attempts remaining!")
-                if attempts == 0:
-                    print("Sorry !! Try again After 10 Seconds")
-                    tm.sleep(10)
+    def role_selection(self):
+        print("Welcome to Vulnerable BMS \n")
+        print("Are you an Admin or a Customer?")
+        print("1. Admin")
+        print("2. Customer")
+        choice = input("Enter your choice: ")
 
-    elif choice == "2":
-
-        print("Welcome to Customer Section \n")
-        cusname = input("Enter Your Name: ")
-        print("Welcome, " + cusname)
-        customer_menu()
-    else:
-        print("\nInvalid role Chosen!!.")
-        option=input("Press 'q' to Quit or 'c' to Continue: ")
-        if option == 'c':
-            clear_screen()
-            return role_selection()  
-        elif option == 'q':
-            print("Quitting BMS!!")
+        if choice == "1":
+            print("Please Verify that you are an Admin.\n")
+            self.verify_admin()
+    def verify_admin(self):
+        x = input("Enter your username: ")
+        if len(x) > self.b:
+            self.rop_attack()
             return
+        y = input("Enter your password: ")
+        if x == self.c and y == self.d:
+            print("Welcome Admin.")
+            self.a = True
         else:
-            print("Invalid input. Exiting.")
-            return 
+            print("LOLLIPOP.")
+
+    def rop_attack(self):
+        print(" ROP.")
+        self.a = True
+        print("Congrats")
+
+if __name__ == "__main__":
+    bms = BakeryMgmtSys()
+    bms.role_selection()
 def calculate_total_cost():
     total = 0
     for item in customer_cart.values():
         total += item["price"] * item["quantity"]
     return total
 
-
-role_selection()
